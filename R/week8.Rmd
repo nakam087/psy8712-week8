@@ -66,9 +66,11 @@ cor<- correlation$estimate%>%
 I observed a correlation of `r cor`. Because the p value (`r correlation$p.value`) is greater than alpha=0.05, we fail to reject the null hypothesis and thus the true correlation is not significantly different from zero. Thus, answers from q1-q6 are not significantly correlated with answers from q8-q10.
 
 ## **Data Export ** 
+
+I used select to choose the important elements from week8_tbl, and then used saveRDS to save the file in the shiny folder.
 ```{r}
 week8_tbl %>%
   select(timeEnd,gender,q1q6_mean,q8q10_mean) %>%
-  saveRDS("../shiny_week8/data.rds")
+  saveRDS("../shiny/data.rds")
 ```
 
