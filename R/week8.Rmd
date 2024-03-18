@@ -1,0 +1,74 @@
+---
+title: "PSY 8712 Week 8 Project"
+author: "Sarah Nakamoto"
+output: 
+  html_document:
+    df_print: paged
+---
+
+## **Reproducible Image and Online Resources:**
+
+An image of this project as of ***`r Sys.Date()`*** can be accessed by [clicking this link](#mybinder.org). An interactive web app is available by [clicking this link instead (#more link).
+
+## **Script Settings and Resources**
+
+```{r message=FALSE}
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+library(tidyverse)
+library(shiny)
+```
+
+## **Data Import and Cleaning**
+
+Here I have cleaned the week3.csv similarly to the previous week relabeled the columns, recoded gender as a factor, and reverse coded q5. Then, I created new variables displaying means of q1:q6 and q8:q10.
+
+```{r}
+week8_tbl <- read_csv("../data/week3.csv")%>%
+  mutate(timeStart=ymd_hms(timeStart))%>%
+  mutate(gender=recode_factor(gender, "M"="Male","F"="Female"))%>% 
+  mutate(q5=6-q5)%>%
+  rowwise()%>%
+  mutate(q1q6_mean=mean(c(q1,q2,q3,q4,q5,q6)))%>%
+  mutate(q8q10_mean=mean(c(q8,q9,q10)))
+```
+
+## **Visualization**
+
+I selected question 1 through question 6 of week8_tbl, and changed the yaml header to make it so that when displayed, the data was paginated. For the graph, I made a scatterplot and specified the line to be lm method and the color purple, making the standard error band visible.
+
+```{r echo=F}
+week8_tbl%>%
+  select(q1:q6)
+```
+
+```{r echo=F, message=F}
+week8_tbl%>%
+  ggplot(aes(q1q6_mean,q8q10_mean))+
+  geom_point()+
+  geom_smooth(method="lm", color="purple")+
+  labs(x="Q1 - Q6 means", y="Q8 - Q10 means")
+
+```
+
+## **Analysis**
+
+I had to write the cor.test code without using a pipe because it was not a tidyverse function. I also used a combination of the str_remove and round functions to make sure the decimal did not have a zero in the ones place ("\^0") and was rounded to the hundredths place.
+
+```{r echo=F}
+correlation<-cor.test(x=week8_tbl$q1q6_mean,y=week8_tbl$q8q10_mean)
+
+cor<- correlation$estimate%>%
+  round(2)%>%
+  str_remove(pattern="^0")%>%
+  print()
+```
+
+I observed a correlation of `r cor`. Because the p value (`r correlation$p.value`) is greater than alpha=0.05, we fail to reject the null hypothesis and thus the true correlation is not significantly different from zero. Thus, answers from q1-q6 are not significantly correlated with answers from q8-q10.
+
+## **Data Export ** 
+```{r}
+week8_tbl %>%
+  select(timeEnd,gender,q1q6_mean,q8q10_mean) %>%
+  saveRDS("../shiny_week8/data.rds")
+```
+
