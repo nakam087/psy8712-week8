@@ -8,7 +8,7 @@ output:
 
 ## **Reproducible Image and Online Resources:**
 
-An image of this project as of *`r Sys.Date()`* can be accessed by [clicking this link](https://mybinder.org/v2/gh/nakam087/psy8712-week8/HEAD). An interactive web app is available by [clicking this link instead](https://chiems.shinyapps.io/shiny_week8/).
+An image of this project as of *`r Sys.Date()`* can be accessed by [clicking this link](https://mybinder.org/v2/gh/nakam087/psy8712-week8/HEAD?urlpath=rstudio). An interactive web app is available by [clicking this link instead](https://chiems.shinyapps.io/shiny_week8/).
 
 ## **Script Settings and Resources**
 
@@ -55,12 +55,11 @@ week8_tbl%>%
 I had to write the cor.test code without using a pipe because it was not a tidyverse function. I also used a combination of the str_remove and round functions to make sure the decimal did not have a zero in the ones place ("\^0") and was rounded to the hundredths place.
 
 ```{r echo=F}
-correlation<-cor.test(x=week8_tbl$q1q6_mean,y=week8_tbl$q8q10_mean)
+(correlation<-cor.test(x=week8_tbl$q1q6_mean,y=week8_tbl$q8q10_mean))
 
 cor<- correlation$estimate%>%
   round(2)%>%
-  str_remove(pattern="^0")%>%
-  print()
+  str_remove(pattern="^0")
 ```
 
 I observed a correlation of `r cor`. Because the p value (`r correlation$p.value`) is greater than alpha=0.05, we fail to reject the null hypothesis and thus the true correlation is not significantly different from zero. Thus, answers from q1-q6 are not significantly correlated with answers from q8-q10.

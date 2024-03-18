@@ -48,7 +48,7 @@ server <- function(input, output) {
        #if include, original data kept
        if (input$date=="Exclude, please!"){
          markdown_data<-markdown_data<-markdown_data%>%
-           filter(timeEnd<ymd("2017-07-01"))
+           filter(timeEnd>ymd("2017-07-01"))
        }
        #if yes to error bars, runs se=T
        if(input$error == "Yeah"){
