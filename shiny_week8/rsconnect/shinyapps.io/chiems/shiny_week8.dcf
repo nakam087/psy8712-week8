@@ -5,6 +5,6 @@ account: chiems
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 11515857
-bundleId: 8384354
+bundleId: 8386233
 url: https://chiems.shinyapps.io/shiny_week8/
 version: 1
