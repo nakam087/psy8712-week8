@@ -1628,10 +1628,10 @@ display: none;
 
 <div id="reproducible-image-and-online-resources" class="section level2">
 <h2><strong>Reproducible Image and Online Resources:</strong></h2>
-<p>An image of this project as of <strong><em>2024-03-18</em></strong>
-can be accessed by <a href="#mybinder.org">clicking this link</a>. An
-interactive web app is available by [clicking this link instead (#more
-link).</p>
+<p>An image of this project as of <em>2024-03-18</em> can be accessed by
+<a href="https://mybinder.org/v2/gh/nakam087/psy8712-week8/HEAD">clicking
+this link</a>. An interactive web app is available by <a href="https://chiems.shinyapps.io/shiny_week8/">clicking this link
+instead</a>.</p>
 </div>
 <div id="script-settings-and-resources" class="section level2">
 <h2><strong>Script Settings and Resources</strong></h2>
@@ -1682,13 +1682,19 @@ not a tidyverse function. I also used a combination of the str_remove
 and round functions to make sure the decimal did not have a zero in the
 ones place (“^0”) and was rounded to the hundredths place.</p>
 <pre><code>## [1] &quot;.08&quot;</code></pre>
-<p>I observed a correlation of .08. Because the p value is greater than
-alpha=0.05, we fail to reject the null hypothesis and thus the true
-correlation is not significantly different from zero. Thus, answers from
-q1-q6 are not significantly correlated with answers from q8-q10.</p>
+<p>I observed a correlation of .08. Because the p value (0.5626235) is
+greater than alpha=0.05, we fail to reject the null hypothesis and thus
+the true correlation is not significantly different from zero. Thus,
+answers from q1-q6 are not significantly correlated with answers from
+q8-q10.</p>
 </div>
 <div id="data-export" class="section level2">
 <h2><strong>Data Export </strong></h2>
+<p>I used select to choose the important elements from week8_tbl, and
+then used saveRDS to save the file in the shiny folder.</p>
+<pre class="r"><code>week8_tbl %&gt;%
+  select(timeEnd,gender,q1q6_mean,q8q10_mean) %&gt;%
+  saveRDS(&quot;../shiny_week8/data.rds&quot;)</code></pre>
 </div>
 
 

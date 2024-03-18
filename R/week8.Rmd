@@ -8,7 +8,7 @@ output:
 
 ## **Reproducible Image and Online Resources:**
 
-An image of this project as of ***`r Sys.Date()`*** can be accessed by [clicking this link](https://mybinder.org/v2/gh/nakam087/psy8712-week8/HEAD). An interactive web app is available by [clicking this link instead (#more link).
+An image of this project as of *`r Sys.Date()`* can be accessed by [clicking this link](https://mybinder.org/v2/gh/nakam087/psy8712-week8/HEAD). An interactive web app is available by [clicking this link instead](https://chiems.shinyapps.io/shiny_week8/).
 
 ## **Script Settings and Resources**
 
@@ -71,6 +71,6 @@ I used select to choose the important elements from week8_tbl, and then used sav
 ```{r}
 week8_tbl %>%
   select(timeEnd,gender,q1q6_mean,q8q10_mean) %>%
-  saveRDS("../shiny/data.rds")
+  saveRDS("../shiny_week8/data.rds")
 ```
 

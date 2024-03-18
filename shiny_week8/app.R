@@ -37,17 +37,17 @@ server <- function(input, output) {
 
     output$plot <- renderPlot({
       #loading in "skinny" data
-       markdown_data<- readRDS("./shiny/data.rds")
+       markdown_data<- readRDS("./data.rds")
        #filters data if Male or Female
        #if All, original data kept
        if (input$gender!="All"){
-         markdown_data<- markdown_data%>%
+         markdown_data<-markdown_data<- markdown_data%>%
            filter(gender==input$gender)
        }
        #filters data if excluding
        #if include, original data kept
        if (input$date=="Exclude, please!"){
-         markdown_data<-markdown_data%>%
+         markdown_data<-markdown_data<-markdown_data%>%
            filter(timeEnd<ymd("2017-07-01"))
        }
        #if yes to error bars, runs se=T
