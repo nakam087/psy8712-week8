@@ -1629,7 +1629,7 @@ display: none;
 <div id="reproducible-image-and-online-resources" class="section level2">
 <h2><strong>Reproducible Image and Online Resources:</strong></h2>
 <p>An image of this project as of <em>2024-03-18</em> can be accessed by
-<a href="https://mybinder.org/v2/gh/nakam087/psy8712-week8/HEAD">clicking
+<a href="https://mybinder.org/v2/gh/nakam087/psy8712-week8/HEAD?urlpath=rstudio">clicking
 this link</a>. An interactive web app is available by <a href="https://chiems.shinyapps.io/shiny_week8/">clicking this link
 instead</a>.</p>
 </div>
@@ -1681,7 +1681,17 @@ visible.</p>
 not a tidyverse function. I also used a combination of the str_remove
 and round functions to make sure the decimal did not have a zero in the
 ones place (“^0”) and was rounded to the hundredths place.</p>
-<pre><code>## [1] &quot;.08&quot;</code></pre>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  week8_tbl$q1q6_mean and week8_tbl$q8q10_mean
+## t = 0.58309, df = 47, p-value = 0.5626
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.2012466  0.3574248
+## sample estimates:
+##        cor 
+## 0.08474575</code></pre>
 <p>I observed a correlation of .08. Because the p value (0.5626235) is
 greater than alpha=0.05, we fail to reject the null hypothesis and thus
 the true correlation is not significantly different from zero. Thus,
